@@ -17,14 +17,17 @@ protocol ChangeCityDelegate {
 
 class ChangeCityViewController: UIViewController {
     var delegate : ChangeCityDelegate?
-    var switchTrueFalse = true // this is a default value so I don't have to use optionals
+   
+    // the variable switchTrueFalse is what we send to the other view controller
+    var switchTrueFalse: Bool = true
+    //This code updates if the switch is on or off
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleSwitch.isOn = switchTrueFalse
     }
     
 
-
+// IBOutlet linked to the switch
     @IBOutlet weak var toggleSwitch: UISwitch!
     
     //This is the pre-linked IBOutlets to the text field:
@@ -44,7 +47,7 @@ class ChangeCityViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         
     }
-    
+    //function for switch that updates the variable switchTrueFalse
     @IBAction func toggleSwitch(_ sender: UISwitch) {
         if (sender.isOn == true)
         {

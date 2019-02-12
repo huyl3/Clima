@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
-    
+    //switchState is a variable that helps store the value of the switch between viewControllers
     var switchState = true
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
@@ -33,11 +33,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     //Min and Max IBOutlets
     
-
     @IBOutlet weak var minimumLabel: UILabel!
     
     @IBOutlet weak var maximumLabel: UILabel!
-    
+    //Change City Button
     @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
@@ -190,6 +189,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         getWeatherData(url: WEATHER_URL, parameters: params)
         
     }
+    //function to display or hide label
     func userFlippedSwitch(value: Bool){
         minimumLabel.isHidden = !value
         maximumLabel.isHidden = !value
@@ -197,7 +197,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
  
     }
     
-    //Write the PrepareForSegue Method here
+    //Prepare for segue method
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -208,6 +208,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             
             
             destinationVC.delegate = self
+            //send switchState to other side
             destinationVC.switchTrueFalse = switchState
             
         }
